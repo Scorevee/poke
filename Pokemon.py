@@ -2,7 +2,13 @@ import tkinter as tk
 
 pokemonj1 = []
 pokemonj2 = []
+
+
+### hola jofre 
+
 torn = 1
+a=0
+
 def sortir():
     finestra_mare.destroy()
 
