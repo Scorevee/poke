@@ -4,7 +4,7 @@ pokemonj1 = []
 pokemonj2 = []
 
 
-### hola jofre 
+### hola xavi
 
 torn = 1
 a=0
