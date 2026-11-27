@@ -170,7 +170,6 @@ def obrir_seleccio():
     boto_sc.place(x=600, y=400)
 
 
-
 #FOTOS
     #Typholsion
     foto_ty = tk.PhotoImage(file="pokemon/157.png")
