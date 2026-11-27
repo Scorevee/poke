@@ -18,9 +18,6 @@ def api_login(app, name, passw):
     #print(data_json)
     return data_json["status"] == "success"
 
-
-
-
 def api_register(app, name, passw):
     #print(f"{API_URL}?a=register&app={app}&name={name}&pass={passw}")
 
@@ -46,7 +43,6 @@ def api_deleteuser(app, username, password):
         # On any error (network, JSON parsing, etc.) return False
         return False
 
-
 def api_userlist(app):
 
     req = Request(
@@ -60,4 +56,3 @@ def api_userlist(app):
     if data_json["status"] != "success":
         return False
     return data_json["msg"]
-

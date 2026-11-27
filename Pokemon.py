@@ -4,7 +4,6 @@ app = "Pokemon3v3"
 pokemonj1 = []
 pokemonj2 = []
 
-
 ### hola xavi
 
 torn = 1
@@ -16,7 +15,6 @@ def sortir():
 finestra_mare = tk.Tk()
 finestra_mare.title("Pokemon")
 finestra_mare.geometry("1300x800")
-
 
 def obrir_instruccions():
     # Creem la finestra secundària vinculada a la mare
@@ -212,7 +210,6 @@ def obrir_seleccio():
     boto_to.bind("<Enter>", mostrar)
     boto_to.bind("<Leave>", amagar)
 
-
     #Milotic
     foto_mi = tk.PhotoImage(file="pokemon/VhJnxCo.png")
     etiqueta_mi = tk.Label(finestra_selec, image=foto_mi, bg="orange")
@@ -248,7 +245,6 @@ def obrir_seleccio():
 
     boto_fo.bind("<Enter>", mostrar)
     boto_fo.bind("<Leave>", amagar)
-
 
     #Serpior
     foto_se = tk.PhotoImage(file="pokemon/800px-Serperior.png").subsample(2, 2)
@@ -409,7 +405,6 @@ def Sceptile(boto_sc):
 
 # Evitem que la finestra es pugui redimensionar si la imatge té una mida fixa
 
-
 finestra_mare.resizable(False, False)
 
 # 3. Creem un Canvas que ocupi tota la finestra
@@ -418,6 +413,7 @@ canvas.pack(fill="both", expand=True)
 
 foto = tk.PhotoImage(file="pokemon/Togedemaru.png")
 canvas.create_image(450, 400, image=foto)
+
 
 boto_com = tk.Button(
     finestra_mare,
@@ -440,7 +436,6 @@ boto_ins = tk.Button(
 )  
 
 canvas.create_window(1000, 400, window=boto_ins)
-
 
 boto_sort = tk.Button(
     finestra_mare,
@@ -477,10 +472,14 @@ def entrar():
         if api_login(app, nom, contra):
             nom_jugador = nom
             frame_login.destroy()
+            mostrar_usuari()
         else:
             label_missatge.config(text="Usuari o contrasenya incorrectes", fg="red")
     except Exception:
         label_missatge.config(text="Error de connexió", fg="red")
+def mostrar_usuari():
+    global nom_jugador
+    label_user.config(text=nom_jugador)
 
 # Pantalla de login (tapa el menú)
 frame_login = tk.Frame(finestra_mare, bg="darkblue")
@@ -496,10 +495,13 @@ tk.Label(frame_login, text="Contrasenya:", font=("Arial", 25), bg="darkblue", fg
 entrada_contra = tk.Entry(frame_login, font=("Arial", 25), show="*")
 entrada_contra.place(x=550, y=350)
 
-tk.Button(frame_login, text="Entrar", font=("Arial", 25, "bold"), command=entrar).place(x=550, y=450)
-tk.Button(frame_login, text="Registrar", font=("Arial", 25, "bold"), command=registrar).place(x=700, y=450)
+tk.Button(frame_login, text="Entrar", font=("Arial", 25, "bold"), command=entrar).place(x=450, y=450)
+tk.Button(frame_login, text="Registrar", font=("Arial", 25, "bold"), command=registrar).place(x=600, y=450)
 
 label_missatge = tk.Label(frame_login, text="", font=("Arial", 20, "bold"), bg="darkblue")
 label_missatge.place(x=450, y=550)
+
+label_user = tk.Label(finestra_mare, text=(nom_jugador), font=("Arial", 30, "bold"), bg="darkblue", fg="yellow")
+label_user.place(x=900, y=100)
 
 finestra_mare.mainloop()
